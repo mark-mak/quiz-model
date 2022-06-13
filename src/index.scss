@@ -36,10 +36,14 @@ html {
     pointer-events: none;
     user-select: none;
   }
+
+  &.text-indent {
+    text-indent: -24px;
+  }
 }
 
 button {
-  transition: all 0.3s;
+  transition: border-color 0.3s;
 
   &:not(:disabled):hover {
     cursor: pointer;
@@ -67,7 +71,7 @@ button.wrong {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: stretch;
   flex-wrap: wrap;
 
   & > * {

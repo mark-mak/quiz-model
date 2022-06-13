@@ -46,6 +46,7 @@ const Choice: FC<ChoiceProps> = (props) => {
         correct: isCorrect && isAnswered,
         wrong: isSelected && !isCorrect && isAnswered,
         "text-box": true,
+        "text-indent": true,
       })}
       onClick={isAnswered ? undefined : handleClick}
       disabled={isAnswered}
@@ -71,7 +72,7 @@ const MultipleChoice: FC<MultipleChoiceProps> = (props) => {
 
   return (
     <div className="mc-contatiner">
-      {questionList[index].multipleChoice.map((item) => (
+      {questionList[index].multipleChoice.map((item, itemIndex) => (
         <Fragment key={item.id}>
           <Choice
             index={index}
@@ -80,7 +81,12 @@ const MultipleChoice: FC<MultipleChoiceProps> = (props) => {
             onClick={handleClick}
             onCorrect={onCorrect}
           >
-            {item.content}
+            <span>
+              {String.fromCharCode(65 + itemIndex)}.&nbsp;
+            </span>
+            <span>
+              {item.content}
+            </span>
           </Choice>
         </Fragment>
       ))}

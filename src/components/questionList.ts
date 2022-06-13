@@ -1,4 +1,4 @@
-const questionList = [
+const initialQuestionList = [
   {
     question: {
       id: 'q001',
@@ -8,19 +8,19 @@ const questionList = [
     multipleChoice: [
       {
         id: 'mc001',
-        content: 'A (correct)',
+        content: 'Apple (correct)',
       },
       {
         id: 'mc002',
-        content: 'B (wrong)',
+        content: 'Banana (wrong)',
       },
       {
         id: 'mc003',
-        content: 'C (wrong)',
+        content: 'Cat (wrong)',
       },
       {
         id: 'mc004',
-        content: 'D (wrong)',
+        content: 'Dog (wrong)',
       },
     ],
     correctAns: 'mc001',
@@ -34,19 +34,19 @@ const questionList = [
     multipleChoice: [
       {
         id: 'mc001',
-        content: 'A (correct)',
+        content: 'Apple (correct)',
       },
       {
         id: 'mc002',
-        content: 'B (wrong)',
+        content: 'Banana (wrong)',
       },
       {
         id: 'mc003',
-        content: 'C (wrong)',
+        content: 'Cat (wrong)',
       },
       {
         id: 'mc004',
-        content: 'D (wrong)',
+        content: 'Dog (wrong)',
       },
     ],
     correctAns: 'mc001',
@@ -60,23 +60,43 @@ const questionList = [
     multipleChoice: [
       {
         id: 'mc001',
-        content: 'A (correct)',
+        content: 'Apple (correct)',
       },
       {
         id: 'mc002',
-        content: 'B (wrong)',
+        content: 'Banana (wrong)',
       },
       {
         id: 'mc003',
-        content: 'C (wrong)',
+        content: 'Cat (wrong)',
       },
       {
         id: 'mc004',
-        content: 'D (wrong)',
+        content: 'Dog (wrong)',
       },
     ],
     correctAns: 'mc001',
   },
 ];
+
+const shuffleArray: <T>(arr: T[]) => T[] = (array) => {
+  const result = array.slice(0);
+
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = result[i];
+    result[i] = result[j];
+    result[j] = temp;
+  }
+
+  return result
+}
+
+const questionList = initialQuestionList.map((question) => (
+  {
+    ...question,
+    multipleChoice: shuffleArray(question.multipleChoice),
+  }
+));
 
 export default questionList;

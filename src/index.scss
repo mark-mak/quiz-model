@@ -1,0 +1,160 @@
+@font-face {
+  font-family: AddingtonCF;
+  src: url("../public/fonts/AddingtonCF-Regular.otf") format("opentype");
+}
+
+html {
+  font-size: 16px;
+  overflow: hidden;
+}
+
+* {
+  font-family: AddingtonCF;
+  color: black;
+  text-shadow: 2px 2px lightgrey;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+}
+
+.page-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../public/img/Background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 32px;
+}
+
+.text-box {
+  border-radius: 4px;
+  border: 8px solid lightgrey;
+  padding: 16px 48px;
+  background-color: white;
+
+  &:not(button) {
+    border: 8px ridge lightgrey;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+button {
+  transition: all 0.3s;
+
+  &:not(:disabled):hover {
+    cursor: pointer;
+    border-color: blue;
+  }
+}
+
+button.correct {
+  border-color: green;
+  background: lightgreen;
+}
+
+button.wrong {
+  border-color: red;
+  background: pink;
+}
+
+.action-button {
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.mc-contatiner {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  & > * {
+    width: calc(50% - 8px);
+    margin-bottom: 16px;
+    text-align: left;
+
+    &:nth-child(odd) {
+      margin-right: 16px;
+    }
+  }
+
+  button {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 64px;
+      height: 64px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      left: -16px;
+      top: -16px;
+    }
+
+    &:nth-child(1)::before {
+      background-image: url("../public/img/AnswerA.png");
+    }
+    &:nth-child(2)::before {
+      background-image: url("../public/img/AnswerB.png");
+    }
+    &:nth-child(3)::before {
+      background-image: url("../public/img/AnswerC.png");
+    }
+    &:nth-child(4)::before {
+      background-image: url("../public/img/AnswerD.png");
+    }
+  }
+}
+
+.question-container {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 192px;
+    height: 192px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../public/img/Question_Der.png");
+    right: -48px;
+    top: -48px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+$spacer: 8;
+@for $i from 0 to 15 {
+    .mt-#{$spacer * $i} {
+        margin-top: ($spacer * $i + px) !important;
+    }
+
+    .mb-#{$spacer * $i} {
+        margin-bottom: ($spacer * $i + px) !important;
+    }
+
+    .ml-#{$spacer * $i} {
+        margin-left: ($spacer * $i + px) !important;
+    }
+
+    .mr-#{$spacer * $i} {
+        margin-right: ($spacer * $i + px) !important;
+    }
+
+    .mx-#{$spacer * $i} {
+        margin-left: ($spacer * $i + px) !important;
+        margin-right: ($spacer * $i + px) !important;
+    }
+}
